@@ -1,12 +1,32 @@
-const IssuesContainer = document.getElementById("IssuesContainer");
-const allIssuesBtn = document.getElementById("allIssuesBtn");
+const issuesContainer = document.getElementById("IssuesContainer");
+const allBtn = document.getElementById("all-btn");
+const openBtn = document.getElementById("open-btn");
+const closeBtn = document.getElementById("close-btn");
+let allIssues = [];
 
-// allIssuesBtn.addEventListener("click",async() =>{
+allBtn.addEventListener("click", () => {
+  displayIssues(allIssues);
+});
+openBtn.addEventListener("click", () => {
+  const openIssues = allIssues.filter((issue) => issue.status === "open");
 
-// })
+  displayIssues(openIssues);
+});
+closeBtn.addEventListener("click", () => {
+ const closedIssues = allIssues.filter(
+  (issue) => issue.status ==="closed"
+);
+
+displayIssues(closedIssues);
+});
+
+
 
 const createElements = (arr) => {
-  const htmlElements = arr.map((el) => `<button class ="mr-2 px-2 py-1 rounded-lg ${el==="bug"? "bg-red-400":el === "help wanted"? "bg-orange-300":"bg-green-400"}">${el}<button/>`);
+  const htmlElements = arr.map(
+    (el) =>
+      `<button class ="mr-2 px-2 py-1 rounded-lg ${el === "bug" ? "bg-red-400" : el === "help wanted" ? "bg-orange-300" : "bg-green-400"}">${el}<button/>`,
+  );
   return htmlElements.join(" ");
 };
 
@@ -15,9 +35,13 @@ async function loadIssues() {
     `https://phi-lab-server.vercel.app/api/v1/lab/issues`,
   );
   const data = await res.json();
-  displayIssues(data.data);
+  const allData = data.data;
+  allIssues = allData;
+
+  displayIssues(allIssues);
 }
 function displayIssues(issues) {
+  issuesContainer.innerHTML = " ";
   issues.forEach((issue) => {
     const div = document.createElement("div");
     div.innerHTML = `
@@ -44,7 +68,7 @@ function displayIssues(issues) {
     
     
     `;
-    IssuesContainer.appendChild(div);
+    issuesContainer.appendChild(div);
   });
 }
 loadIssues();
