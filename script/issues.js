@@ -1,18 +1,36 @@
 const issuesContainer = document.getElementById("IssuesContainer");
 const allBtn = document.getElementById("all-btn");
 const openBtn = document.getElementById("open-btn");
-const closeBtn = document.getElementById("close-btn");
+const closedBtn = document.getElementById("close-btn");
 let allIssues = [];
 
+// set-selected-button
+const setSelectedButton = (selected) =>{
+   allBtn.classList.remove("btn-primary");
+  openBtn.classList.remove("btn-primary");
+  closedBtn.classList.remove("btn-primary");
+
+  selected.classList.add("btn-primary")
+}
+
+// all-button
 allBtn.addEventListener("click", () => {
+  setSelectedButton(allBtn)
   displayIssues(allIssues);
 });
+
+// open-button
 openBtn.addEventListener("click", () => {
+  setSelectedButton(openBtn)
   const openIssues = allIssues.filter((issue) => issue.status === "open");
 
   displayIssues(openIssues);
 });
-closeBtn.addEventListener("click", () => {
+
+
+// closed-button
+closedBtn.addEventListener("click", () => {
+  setSelectedButton(closedBtn)
  const closedIssues = allIssues.filter(
   (issue) => issue.status ==="closed"
 );
