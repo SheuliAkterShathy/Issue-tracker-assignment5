@@ -4,6 +4,8 @@ const openBtn = document.getElementById("open-btn");
 const closedBtn = document.getElementById("close-btn");
 const loading = document.getElementById("loading");
 const issueModal = document.getElementById("issue_modal");
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
 
 let totalIssueLength = document.getElementById("totalIssueLength");
 let allIssues = [];
@@ -31,6 +33,9 @@ openBtn.addEventListener("click", () => {
   const openIssues = allIssues.filter((issue) => issue.status === "open");
   totalIssueLength.innerText = openIssues.length;
   displayIssues(openIssues);
+  const name = "shathy";
+  const result = `<span>${name}</span>`;
+  console.log(result.join(" "));
 });
 
 // closed-button
@@ -41,21 +46,25 @@ closedBtn.addEventListener("click", () => {
   displayIssues(closedIssues);
 });
 
-
+const createElements = (arr) => {
+  const htmlElements = arr.map(
+    (el) =>
+      `<button class ="mr-2 px-2 py-1 rounded-lg badge ${el === "bug" ? " bg-red-100 text-red-500 font-semibold " : el === "help wanted" ? "bg-orange-100 text-orange-400 font-semibold" : "bg-green-100 text-green-500 font-semibold"}">${el.toUpperCase()}<button/>`,
+  );
+  return htmlElements.join(" ");
+};
 // modal
 
-const openIssueModal = async(issueId) =>{
-   const res = await fetch(
-    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${issueId}`
+const openIssueModal = async (issueId) => {
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${issueId}`,
   );
 
   const data = await res.json();
 
   const issue = data.data;
-  
 
-
- issueModal.innerHTML = `
+  issueModal.innerHTML = `
     <div class="modal-box max-w-2xl p-7 rounded-2xl">
 
       <!-- Close Icon -->
@@ -89,15 +98,7 @@ const openIssueModal = async(issueId) =>{
 
       <!-- Labels -->
       <div class="flex gap-3 mt-5">
-        ${issue.labels
-          .map(
-            (label) => `
-              <span class="badge badge-error badge-outline px-4 py-3">
-                ${label}
-              </span>
-            `
-          )
-          .join("")}
+      ${createElements(issue.labels)}
       </div>
 
       <!-- Description -->
@@ -149,17 +150,7 @@ const openIssueModal = async(issueId) =>{
     </form>
   `;
 
-
-
- issueModal.showModal()
-
-}
-const createElements = (arr) => {
-  const htmlElements = arr.map(
-    (el) =>
-      `<button class ="mr-2 px-2 py-1 rounded-lg ${el === "bug" ? "bg-red-400" : el === "help wanted" ? "bg-orange-300" : "bg-green-400"}">${el}<button/>`,
-  );
-  return htmlElements.join(" ");
+  issueModal.showModal();
 };
 
 async function loadIssues() {
@@ -178,7 +169,7 @@ function displayIssues(issues) {
   issuesContainer.innerHTML = " ";
   issues.forEach((issue) => {
     const div = document.createElement("div");
-    div.className = `border-t-3 rounded-md ${issue.status === "open"?"border-green-500":"border-purple-600"}`
+    div.className = `border-t-3 rounded-md ${issue.status === "open" ? "border-green-500" : "border-purple-600"}`;
     div.innerHTML = `
     
      <div class="bg-white shadow p-4 rounded-md card h-full cursor-pointer">
@@ -204,12 +195,27 @@ function displayIssues(issues) {
     
     `;
 
-       // Card click → Modal
+    // Card click → Modal
     div.addEventListener("click", () => {
       openIssueModal(issue.id);
     });
     issuesContainer.appendChild(div);
   });
 }
+
+searchBtn.addEventListener("click", async () => {
+  const searchText = searchInput.value.trim().toLowerCase();
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`,
+  );
+
+  const searchData = await res.json();
+  const data = searchData.data;
+
+  totalIssueLength.innerText = data.length;
+
+  displayIssues(data);
+});
 loadIssues();
-// displayIssues()
+

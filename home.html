@@ -89,10 +89,16 @@
                   <path d="m21 21-4.3-4.3"></path>
                 </g>
               </svg>
-              <input class="" type="search" required placeholder="Search" />
+              <input
+                id="search-input"
+                class=""
+                type="search"
+                required
+                placeholder="Search"
+              />
             </label>
-            <button id="" class="btn btn-primary rounded-lg ml-4">
-              + New Issue
+            <button id="search-btn" class="btn btn-primary rounded-lg ml-4">
+              Search
             </button>
           </div>
         </div>
@@ -162,85 +168,85 @@
         <!-- Modal -->
         <dialog id="issue_modal" class="modal">
           <!-- <div class="modal-box max-w-2xl p-7 rounded-2xl"> -->
-            <!-- Close Icon -->
+          <!-- Close Icon -->
+          <form method="dialog">
+            <button
+              class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-gray-500"
+            >
+              ✕
+            </button>
+          </form>
+
+          <!-- Title -->
+          <h3 class="text-2xl font-bold text-gray-800">
+            Fix broken image uploads
+          </h3>
+
+          <!-- Status -->
+          <div class="flex items-center gap-2 mt-3 text-sm text-gray-500">
+            <span class="badge badge-success text-white"> ● Opened </span>
+
+            <span>•</span>
+
+            <span>Opened by Fahim Ahmed</span>
+
+            <span>•</span>
+
+            <span>22/02/2026</span>
+          </div>
+
+          <!-- Labels -->
+          <div class="flex gap-3 mt-5">
+            <span class="badge badge-error badge-outline px-4 py-3">
+              🐞 BUG
+            </span>
+
+            <span class="badge badge-warning badge-outline px-4 py-3">
+              🔗 HELP WANTED
+            </span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-gray-500 leading-7 mt-5">
+            The navigation menu doesn't collapse properly on mobile devices.
+            Need to fix the responsive behavior.
+          </p>
+
+          <!-- Assignee & Priority -->
+          <div class="bg-slate-50 rounded-xl p-5 mt-6 flex items-center">
+            <!-- Assignee -->
+            <div class="w-1/2">
+              <p class="text-gray-500 text-sm">Assignee:</p>
+
+              <p class="font-bold text-gray-800 mt-1">Fahim Ahmed</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider divider-horizontal"></div>
+
+            <!-- Priority -->
+            <div class="w-1/2">
+              <p class="text-gray-500 text-sm">Priority:</p>
+
+              <span class="badge badge-error text-white mt-1"> HIGH </span>
+            </div>
+          </div>
+
+          <!-- Close Button -->
+          <div class="modal-action">
             <form method="dialog">
               <button
-                class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-gray-500"
+                class="btn bg-purple-600 hover:bg-purple-700 text-white border-none px-8"
               >
-                ✕
+                Close
               </button>
             </form>
-
-            <!-- Title -->
-            <h3 class="text-2xl font-bold text-gray-800">
-              Fix broken image uploads
-            </h3>
-
-            <!-- Status -->
-            <div class="flex items-center gap-2 mt-3 text-sm text-gray-500">
-              <span class="badge badge-success text-white"> ● Opened </span>
-
-              <span>•</span>
-
-              <span>Opened by Fahim Ahmed</span>
-
-              <span>•</span>
-
-              <span>22/02/2026</span>
-            </div>
-
-            <!-- Labels -->
-            <div class="flex gap-3 mt-5">
-              <span class="badge badge-error badge-outline px-4 py-3">
-                🐞 BUG
-              </span>
-
-              <span class="badge badge-warning badge-outline px-4 py-3">
-                🔗 HELP WANTED
-              </span>
-            </div>
-
-            <!-- Description -->
-            <p class="text-gray-500 leading-7 mt-5">
-              The navigation menu doesn't collapse properly on mobile devices.
-              Need to fix the responsive behavior.
-            </p>
-
-            <!-- Assignee & Priority -->
-            <div class="bg-slate-50 rounded-xl p-5 mt-6 flex items-center">
-              <!-- Assignee -->
-              <div class="w-1/2">
-                <p class="text-gray-500 text-sm">Assignee:</p>
-
-                <p class="font-bold text-gray-800 mt-1">Fahim Ahmed</p>
-              </div>
-
-              <!-- Divider -->
-              <div class="divider divider-horizontal"></div>
-
-              <!-- Priority -->
-              <div class="w-1/2">
-                <p class="text-gray-500 text-sm">Priority:</p>
-
-                <span class="badge badge-error text-white mt-1"> HIGH </span>
-              </div>
-            </div>
-
-            <!-- Close Button -->
-            <div class="modal-action">
-              <form method="dialog">
-                <button
-                  class="btn bg-purple-600 hover:bg-purple-700 text-white border-none px-8"
-                >
-                  Close
-                </button>
-              </form>
-            </div>
+          </div>
           <!-- </div> -->
 
           <!-- Background -->
           <!-- <form method="dialog" class="modal-backdrop"> -->
-            <!-- <button>close</button> -->
+          <!-- <button>close</button> -->
           <!-- </form> -->
         </dialog>
       </section>
