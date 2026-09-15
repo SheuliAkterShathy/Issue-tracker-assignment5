@@ -49,7 +49,7 @@ closedBtn.addEventListener("click", () => {
 const createElements = (arr) => {
   const htmlElements = arr.map(
     (el) =>
-      `<button class ="mr-2 px-2 py-1 rounded-lg badge ${el === "bug" ? " bg-red-100 text-red-500 font-semibold " : el === "help wanted" ? "bg-orange-100 text-orange-400 font-semibold" : "bg-green-100 text-green-500 font-semibold"}">${el.toUpperCase()}<button/>`,
+      `<button class ="mr-2 px-2 py-1 rounded-lg badge ${el === "bug" ? " bg-red-100 text-red-500 font-semibold " : el === "help wanted" ? "bg-orange-100 text-orange-400 font-semibold" : "bg-green-100 text-green-500 font-semibold"}">${el.toUpperCase()}</button>`,
   );
   return htmlElements.join(" ");
 };
@@ -218,4 +218,3 @@ searchBtn.addEventListener("click", async () => {
   displayIssues(data);
 });
 loadIssues();
-

@@ -46,23 +46,6 @@
         ></label>
         <div class="collapse-title navbar">
           <div class="navbar-start">
-            <!-- 
-              <svg
-                aria-label="Menu"
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label> -->
             <div class="flex justify-center items-center">
               <img class="w-8 md:w-12" src="./assets/github-logo.png" alt="" />
               <button class="md:font-semibold ml-2 md:text-xl">
@@ -163,92 +146,8 @@
           class="grid grid-cols-3 gap-8 shadow-md p-5"
         ></div>
 
-        <!-- modal -->
-
         <!-- Modal -->
-        <dialog id="issue_modal" class="modal">
-          <!-- <div class="modal-box max-w-2xl p-7 rounded-2xl"> -->
-          <!-- Close Icon -->
-          <form method="dialog">
-            <button
-              class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-gray-500"
-            >
-              ✕
-            </button>
-          </form>
-
-          <!-- Title -->
-          <h3 class="text-2xl font-bold text-gray-800">
-            Fix broken image uploads
-          </h3>
-
-          <!-- Status -->
-          <div class="flex items-center gap-2 mt-3 text-sm text-gray-500">
-            <span class="badge badge-success text-white"> ● Opened </span>
-
-            <span>•</span>
-
-            <span>Opened by Fahim Ahmed</span>
-
-            <span>•</span>
-
-            <span>22/02/2026</span>
-          </div>
-
-          <!-- Labels -->
-          <div class="flex gap-3 mt-5">
-            <span class="badge badge-error badge-outline px-4 py-3">
-              🐞 BUG
-            </span>
-
-            <span class="badge badge-warning badge-outline px-4 py-3">
-              🔗 HELP WANTED
-            </span>
-          </div>
-
-          <!-- Description -->
-          <p class="text-gray-500 leading-7 mt-5">
-            The navigation menu doesn't collapse properly on mobile devices.
-            Need to fix the responsive behavior.
-          </p>
-
-          <!-- Assignee & Priority -->
-          <div class="bg-slate-50 rounded-xl p-5 mt-6 flex items-center">
-            <!-- Assignee -->
-            <div class="w-1/2">
-              <p class="text-gray-500 text-sm">Assignee:</p>
-
-              <p class="font-bold text-gray-800 mt-1">Fahim Ahmed</p>
-            </div>
-
-            <!-- Divider -->
-            <div class="divider divider-horizontal"></div>
-
-            <!-- Priority -->
-            <div class="w-1/2">
-              <p class="text-gray-500 text-sm">Priority:</p>
-
-              <span class="badge badge-error text-white mt-1"> HIGH </span>
-            </div>
-          </div>
-
-          <!-- Close Button -->
-          <div class="modal-action">
-            <form method="dialog">
-              <button
-                class="btn bg-purple-600 hover:bg-purple-700 text-white border-none px-8"
-              >
-                Close
-              </button>
-            </form>
-          </div>
-          <!-- </div> -->
-
-          <!-- Background -->
-          <!-- <form method="dialog" class="modal-backdrop"> -->
-          <!-- <button>close</button> -->
-          <!-- </form> -->
-        </dialog>
+        <dialog id="issue_modal" class="modal"></dialog>
       </section>
     </main>
 
